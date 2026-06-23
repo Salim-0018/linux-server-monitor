@@ -2,21 +2,22 @@ pipeline {
     agent any
 
     stages {
+
         stage('Build') {
             steps {
-                sh 'echo Building Linux Server Monitor'
+                sh 'chmod +x monitor.sh'
             }
         }
 
-        stage('Test') {
+        stage('Run Script') {
             steps {
-                sh 'echo Testing Application'
+                sh './monitor.sh'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'echo Deployment Complete'
+                echo 'Monitoring Script Executed Successfully'
             }
         }
     }
